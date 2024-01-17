@@ -12,8 +12,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int counter = 0;
-  double hoji = 100;
-  String str = "Hello Umarjon";
+ gi
 
   int result = 0;
 
