@@ -11,10 +11,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int some_number = 1;
-  int esome_number = 1;
-  int wsome_number = 1;
-  int qsome_number = 1;
   int counter = 0;
 
   int result = 0;
