@@ -12,8 +12,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int counter = 0;
- gi
-
   int result = 0;
 
   Widget bottoms(int index) {
