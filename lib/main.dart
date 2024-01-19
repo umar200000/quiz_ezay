@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:umar1/tools.dart';
+import 'package:umar1/widgen/logika_page.dart';
+import 'package:umar1/widgen/quation_page.dart';
+import 'package:umar1/widgen/resalt_restart.dart';
 
 main() {
   runApp(MyApp());
@@ -15,18 +18,15 @@ class _MyAppState extends State<MyApp> {
   int result = 0;
 
   Widget bottoms(int index) {
-    return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue.shade300,
-        ),
-        onPressed: () {
-          setState(() {
-            data[counter]["Answer"][index]["check"] ? result++ : 0;
-            counter++;
-          });
-        },
-        child: Text("${data[counter]["Answer"][index]["option"]}",
-            style: const TextStyle(fontSize: 20, color: Colors.black)));
+    return LogikaPage(index: index, helper: helper, counter: counter);
+  }
+
+  helper(int index) {
+    setState(() {
+      data[counter]["Answer"][index]["check"] ? result++ : 0;
+      counter++;
+    });
+    return 0;
   }
 
   @override
@@ -42,46 +42,20 @@ class _MyAppState extends State<MyApp> {
           body: Padding(
               padding: const EdgeInsets.all(20.0),
               child: counter < data.length
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          "${data[counter]["Question"]}",
-                          style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                        bottoms(0),
-                        bottoms(1),
-                        bottoms(2),
-                        bottoms(3),
-                      ],
-                    )
-                  : Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Result: $result/${data.length}",
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 25),
-                          ),
-                          ElevatedButton.icon(
-                            onPressed: () {
-                              setState(() {
-                                counter = 0;
-                                result = 0;
-                              });
-                            },
-                            icon: const Icon(Icons.restart_alt),
-                            label: const Text("RESTART"),
-                          )
-                        ],
-                      ),
-                    )),
+                  ? QuationPage(counter: counter, bottoms: bottoms)
+                  : RestartPage(
+                      result: result,
+                      quetonLength: data.length,
+                      restart: restart)),
         ),
       ),
     );
+  }
+
+  restart() {
+    setState(() {
+      counter = 0;
+      result = 0;
+    });
   }
 }
