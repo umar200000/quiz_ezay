@@ -32,21 +32,33 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        useMaterial3: false,
+        fontFamily: "PlayfairDisplayItalic",
+      ),
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.purple.shade300,
-            title: const Text("English Quiz"),
+            // backgroundColor: Colors.purple.shade300,
+            title: const Text(
+              "English Quiz",
+              style: TextStyle(
+                  // fontStyle: FontStyle.italic,
+                  ),
+            ),
           ),
           body: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: counter < data.length
-                  ? QuationPage(counter: counter, bottoms: bottoms)
-                  : RestartPage(
-                      result: result,
-                      quetonLength: data.length,
-                      restart: restart)),
+            padding: const EdgeInsets.all(20.0),
+            child: counter < data.length
+                ? QuationPage(counter: counter, bottoms: bottoms)
+                : RestartPage(
+                    result: result,
+                    quetonLength: data.length,
+                    restart: restart,
+                  ),
+          ),
         ),
       ),
     );

@@ -15,7 +15,7 @@ class LogikaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: Colors.blue.shade300),
+        //   style: ElevatedButton.styleFrom(primary: Colors.blue.shade300),
         onPressed: () {
           helper(index);
         },
